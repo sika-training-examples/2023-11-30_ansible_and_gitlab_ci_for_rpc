@@ -3,14 +3,18 @@ stages:
 
 run 01_remove_nginx:
   stage: run
-  when: manual
   script:
     - cd 01_remove_nginx
     - ansible-playbook site.yml
+  rules:
+    - if: $RUN_01 == "true"
+    - when: manual
 
 run 02_install_nginx:
   stage: run
-  when: manual
   script:
     - cd 02_install_nginx
     - ansible-playbook site.yml
+  rules:
+    - if: $RUN_02 == "true"
+    - when: manual
