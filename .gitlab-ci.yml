@@ -1,0 +1,16 @@
+stages:
+  - run
+
+run 01_remove_nginx:
+  stage: run
+  when: manual
+  script:
+    - cd 01_remove_nginx
+    - ansible-playbook site.yml
+
+run 02_install_nginx:
+  stage: run
+  when: manual
+  script:
+    - cd 02_install_nginx
+    - ansible-playbook site.yml
